@@ -1,0 +1,52 @@
+=============================================
+  B2B InvoiceHub — Project Startup Guide
+=============================================
+
+PASSWORDS
+---------
+Admin login   : admin123
+Client logins : see DEMO_CREDENTIALS.md (per-client User IDs)
+                e.g. sharma_ent / sharma123, megatech / mega123,
+                     global_traders / global123, sunrise / sunrise123,
+                     horizon / horizon123
+New clients   : use "Register as a new client" on the login page;
+                admin approves from the Registrations tab
+
+
+ALL-IN-ONE STARTUP (run this once, in one terminal)
+----------------------------------------------------
+cd "/Users/siddhantamin/Desktop/Java Project End Sem/B2BInvoiceSystem" && javac -cp "lib/mysql-connector-j.jar" -d out $(find src -name "*.java") && java -cp "out:lib/mysql-connector-j.jar" api.ApiServer &
+cd "/Users/siddhantamin/Desktop/Java Project End Sem/stellar-invoice-dash-main" && npm run dev
+
+
+STEP BY STEP (if above doesn't work)
+-------------------------------------
+Step 1 — Compile Java backend:
+  cd "/Users/siddhantamin/Desktop/Java Project End Sem/B2BInvoiceSystem"
+  javac -cp "lib/mysql-connector-j.jar" -d out $(find src -name "*.java")
+
+Step 2 — Start Java backend (keep this terminal open):
+  java -cp "out:lib/mysql-connector-j.jar" api.ApiServer
+
+Step 3 — Open a NEW terminal, start React frontend:
+  cd "/Users/siddhantamin/Desktop/Java Project End Sem/stellar-invoice-dash-main"
+  npm run dev
+
+Step 4 — Open browser:
+  http://localhost:3000
+
+
+URLS
+----
+Frontend  : http://localhost:3000
+Backend   : http://localhost:8081/api
+
+
+NOTES
+-----
+- MySQL must be running before starting the Java backend
+- If port 3000 is busy: lsof -ti :3000 | xargs kill -9
+- If port 8081 is busy: lsof -ti :8081 | xargs kill -9
+- Java backend only needs to be compiled once (Step 1), not every time
+
+=============================================
